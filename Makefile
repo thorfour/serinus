@@ -4,6 +4,7 @@ all:
 		-v $(GOPATH):$(GOPATH) \
 		-w ${PWD} \
 		-e GOPATH=$(GOPATH) \
+		-u $$(id -u) \
 		golang:1.11 \
 		go build -o ./bin/configserver ./cmd/configserver/
 
@@ -12,12 +13,13 @@ all:
 		-v $(GOPATH):$(GOPATH) \
 		-w ${PWD} \
 		-e GOPATH=$(GOPATH) \
+		-u $$(id -u) \
 		golang:1.11 \
 		go build -o ./bin/configproxy ./cmd/configproxy/
 
 clean:
-	rm -R ./bin/
-	rm ${PWD}/config/terraform/authproxy/passwords
+	rm -rf ./bin/
+	rm -f ${PWD}/config/terraform/authproxy/passwords
 
 terraform:
 	docker run \
