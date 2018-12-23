@@ -1,4 +1,7 @@
-all:
+.PHONY: all clean terraform check-env passwords
+all: passwords build terraform
+
+build:
 	docker run \
 		--rm \
 		-v $(GOPATH):$(GOPATH) \
@@ -37,5 +40,8 @@ terraform:
 		-w ${PWD}/config/terraform \
 	   	hashicorp/terraform:light apply
 
-passwords:
+passwords: check-env
 	docker run --rm -it xmartlabs/htpasswd serinus $(SERINUS_PW) > ${PWD}/config/terraform/authproxy/passwords
+
+check-env:
+	@if test -z "$(SERINUS_PW)"; then echo "SERINUS_PW must be set"; exit 1; fi
