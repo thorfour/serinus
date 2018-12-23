@@ -8,7 +8,7 @@ resource "digitalocean_ssh_key" "default" {
 }
 
 module "healthcheck_nyc3" {
-    source = "./module"
+    source = "./healthcheck"
 
     do_token = "${var.do_token}"
     region = "nyc3"
@@ -28,7 +28,7 @@ module "healthcheck_nyc3" {
 }
 
 module "healthcheck_lon1" {
-    source = "./module"
+    source = "./healthcheck"
 
     do_token = "${var.do_token}"
     region = "lon1"
