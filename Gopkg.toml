@@ -1,0 +1,15 @@
+[[override]]
+  name = "github.com/miekg/dns"
+  version = "<=v1.0.15"
+
+[[override]]
+  name = "github.com/Azure/azure-sdk-for-go"
+  version = "6.0.0-beta"
+
+[[override]]
+  name = "k8s.io/client-go"
+  version = "<=v9.0.0"
+
+[[constraint]]
+  name = "github.com/prometheus/prometheus"
+  version = "v2.6.0"
