@@ -4,21 +4,21 @@ all: passwords build terraform
 build:
 	docker run \
 		--rm \
-		-v $(GOPATH):$(GOPATH) \
+		-v ${PWD}:${PWD} \
 		-w ${PWD} \
-		-e GOPATH=$(GOPATH) \
 		-u $$(id -u) \
+		-e XDG_CACHE_HOME=/tmp/.cache \
 		golang:1.11 \
-		go build -o ./bin/configserver ./cmd/configserver/
+		go build -mod=vendor -o ./bin/configserver ./cmd/configserver/
 
 	docker run \
 		--rm \
-		-v $(GOPATH):$(GOPATH) \
+		-v ${PWD}:${PWD} \
 		-w ${PWD} \
-		-e GOPATH=$(GOPATH) \
 		-u $$(id -u) \
+		-e XDG_CACHE_HOME=/tmp/.cache \
 		golang:1.11 \
-		go build -o ./bin/configproxy ./cmd/configproxy/
+		go build -mod=vendor -o ./bin/configproxy ./cmd/configproxy/
 
 clean:
 	rm -rf ./bin/
