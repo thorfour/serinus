@@ -16,6 +16,10 @@ By default serinus deploys to multiple regions (nyc3,lon1)
 
 This will build the required binaries, and deploy federated [prometheus](https://prometheus.io/) that point to [blackbox exporters](https://github.com/prometheus/blackbox_exporter)
 
+# Tear down
+
+`make teardown`
+
 # Usage
 
 After serinus deploys all the resources, terraform will printout `proxy_ip` the address of the federated prometheus instance to view metrics from all regions, as well as the ip address of the configuration proxy. 
@@ -24,7 +28,7 @@ The proxy endpoint will require a login which will be username `serinus` passwor
 
 ## View metrics
 
-open up <proxy_ip>:9090 in a web browser
+open up `<proxy_ip>:9090` in a web browser
 
 ## Add new endpoint to a region
 

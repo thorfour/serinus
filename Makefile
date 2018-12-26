@@ -45,3 +45,12 @@ passwords: check-env
 
 check-env:
 	@if test -z "$(SERINUS_PW)"; then echo "SERINUS_PW must be set"; exit 1; fi
+
+teardown:
+	docker run \
+	   	-i \
+	   	-t \
+		-v ~/.ssh:/root/.ssh \
+		-v ${PWD}:${PWD} \
+		-w ${PWD}/config/terraform \
+	   	hashicorp/terraform:light destroy
