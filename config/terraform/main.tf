@@ -107,7 +107,8 @@ resource "digitalocean_droplet" "prometheus_main" {
             "docker pull prom/prometheus",
             "docker run -d -p 9090:9090 -v /etc/prom.yml:/etc/prom.yml prom/prometheus --config.file=/etc/prom.yml",
             "chmod +x /configproxy",
-            "/configproxy -p 9091 -r 'nyc3,${module.healthcheck_nyc3.prometheus_addr}:9091,lon1,${module.healthcheck_lon1.prometheus_addr}:9091' &",
+            "nohup /configproxy -p 9091 -r 'nyc3,${module.healthcheck_nyc3.prometheus_addr}:9091,lon1,${module.healthcheck_lon1.prometheus_addr}:9091' &",
+            "sleep 1",
         ]
 
         connection {

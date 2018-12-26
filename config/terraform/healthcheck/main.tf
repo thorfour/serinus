@@ -139,7 +139,8 @@ resource "digitalocean_droplet" "prometheus_node" {
             "docker run -d -p 9090:9090 -v /configs:/configs -v /etc/prom.yml:/etc/prom.yml prom/prometheus --config.file=/etc/prom.yml",
             "cd /configs",
             "chmod +x configserver",
-            "./configserver &",
+            "nohup ./configserver &",
+            "sleep 1",
         ]
 
         connection {
