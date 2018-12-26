@@ -28,12 +28,12 @@ open up <proxy_ip>:9090 in a web browser
 
 ## Add new endpoint to a region
 
-`curl -X PATCH <proxy_ip>:9091/api/v1/add?target=<your_url>&module=http_2xx&region=<given_region>`
+`curl -u serinus:<your_password> -X PATCH <proxy_ip>:9091/api/v1/add?target=<your_url>&module=http_2xx&region=<given_region>`
 
 ## Remove endpoint from a region
 
-`curl -X DELETE <proxy_ip>:9091/api/v1/del?target=<your_url>&module=http_2xx&region=<given_region>`
+`curl -u serinus:<your_password> -X DELETE <proxy_ip>:9091/api/v1/del?target=<your_url>&module=http_2xx&region=<given_region>`
 
 ## List all targets for a region
 
-`curl -X GET <proxy_ip>:9091/api/v1/targets?module=http_2xx&region=<given_region>`
+`curl -u serinus:<your_password> -X GET <proxy_ip>:9091/api/v1/targets?module=http_2xx&region=<given_region>`
